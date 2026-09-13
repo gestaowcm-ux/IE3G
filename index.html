@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IE3G | Conhecimento, Estratégia, Gestão & Resultados</title>
+  <meta name="description" content="Site institucional do Instituto IE3G. Consultoria estratégica, governança corporativa, conhecimento executivo e resultados sustentáveis.">
+  
+  <!-- Estilos e Tokens do Design System -->
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Favicon com a marca IE3G -->
+  <link rel="icon" type="image/jpeg" href="logotipo/Logo IE3G fundo branco.jpg">
+</head>
+<body>
+
+  <!-- Brilho de Ambiente Superior (Top Aura Editorial) -->
+  <div class="editorial-ambient-glow"></div>
+
+  <!-- Header Institucional Fiel à Referência Dribbble -->
+  <header class="site-header">
+    <div class="container header-inner">
+      
+      <!-- Marca IE3G -->
+      <a href="#" class="brand-lockup" aria-label="IE3G Home">
+        <img src="assets/logo_cube.png" alt="Logo IE3G" class="brand-logo-img">
+        <span class="brand-text">IE3G</span>
+      </a>
+
+      <!-- Menu Central Suíço com Ponto Ativo -->
+      <nav class="nav-container" aria-label="Navegação Principal">
+        <ul class="nav-menu">
+          <li><a href="#solucoes" class="nav-link active">Soluções</a></li>
+          <li><a href="#pilares" class="nav-link">Pilares</a></li>
+          <li><a href="#metodologia" class="nav-link">Metodologia</a></li>
+          <li><a href="#cases" class="nav-link">Cases</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botão CTA Pílula Delineada -->
+      <div class="header-actions">
+        <button class="btn-pill-outline" data-open-modal aria-label="Iniciar Projeto">
+          <span class="btn-label-desktop">Iniciar Projeto</span>
+          <span class="btn-label-mobile">Contato</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION: RÉPLICA EXATA DO MOTION STUDIO ADAPTADA À IE3G -->
+    <section class="hero-section">
+      <div class="container">
+        
+        <div class="hero-layout">
+          
+          <!-- Coluna da Esquerda: Tipografia Monumental Editorial -->
+          <div class="hero-content">
+            
+            <div class="hero-tag">
+              <span class="status-dot"></span>
+              <span>Instituto de Estratégia, Gestão & Resultados</span>
+            </div>
+
+            <h1 class="hero-headline">
+              <span class="line-dark">Estratégias Que</span>
+              <span class="line-muted">Recusam-se A</span>
+              <span class="line-muted">Ficar Paradas.</span>
+            </h1>
+
+            <p class="hero-description">
+              Conhecimento profundo, governança adaptativa e inteligência estratégica desenhados para organizações ambiciosas moldando o futuro.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#cases" class="nike-btn-primary">
+                <span>Ver Projetos</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+
+              <a href="#sobre" class="hero-link-secondary">
+                <span>Sobre o Instituto</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Coluna da Direita: Apresentação Cinética dos 18 Ícones IE3G (Sem Caixa, Passagem Automática) -->
+          <div class="hero-visual-container">
+            <div class="hero-icons-showcase" id="heroIconsStage" aria-label="Símbolos de Identidade IE3G">
+              <div class="stage-slides-viewport" id="stageSlidesViewport">
+                <div class="stage-slide active" data-index="0" data-name="Evolução">
+                  <img src="assets/icons/01_Evolucao.png" alt="IE3G · Evolução" class="stage-icon-img" loading="eager">
+                </div>
+                <div class="stage-slide" data-index="1" data-name="Conhecimento">
+                  <img src="assets/icons/02_Conhecimento.png" alt="IE3G · Conhecimento" class="stage-icon-img" loading="eager">
+                </div>
+                <div class="stage-slide" data-index="2" data-name="Foco">
+                  <img src="assets/icons/03_Foco.png" alt="IE3G · Foco" class="stage-icon-img" loading="eager">
+                </div>
+                <div class="stage-slide" data-index="3" data-name="Resultados">
+                  <img src="assets/icons/04_Resultados.png" alt="IE3G · Resultados" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="4" data-name="Inovação">
+                  <img src="assets/icons/05_Inovacao.png" alt="IE3G · Inovação" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="5" data-name="Educação">
+                  <img src="assets/icons/06_Educacao.png" alt="IE3G · Educação" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="6" data-name="Gestão">
+                  <img src="assets/icons/07_Gestao.png" alt="IE3G · Gestão" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="7" data-name="Estratégia">
+                  <img src="assets/icons/08_Estrategia.png" alt="IE3G · Estratégia" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="8" data-name="Mentoria">
+                  <img src="assets/icons/09_Mentoria.png" alt="IE3G · Mentoria" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="9" data-name="Orientação">
+                  <img src="assets/icons/10_Orientacao.png" alt="IE3G · Orientação" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="10" data-name="Solução">
+                  <img src="assets/icons/11_Solucao.png" alt="IE3G · Solução" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="11" data-name="Visão Global">
+                  <img src="assets/icons/12_Visao_Global.png" alt="IE3G · Visão Global" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="12" data-name="Confiança">
+                  <img src="assets/icons/13_Confianca.png" alt="IE3G · Confiança" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="13" data-name="Disciplina">
+                  <img src="assets/icons/14_Disciplina.png" alt="IE3G · Disciplina" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="14" data-name="Desenvolvimento">
+                  <img src="assets/icons/15_Desenvolvimento.png" alt="IE3G · Desenvolvimento" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="15" data-name="Conexão">
+                  <img src="assets/icons/16_Conexao.png" alt="IE3G · Conexão" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="16" data-name="Pessoas">
+                  <img src="assets/icons/17_Pessoas.png" alt="IE3G · Pessoas" class="stage-icon-img" loading="lazy">
+                </div>
+                <div class="stage-slide" data-index="17" data-name="Sustentabilidade">
+                  <img src="assets/icons/18_Sustentabilidade.png" alt="IE3G · Sustentabilidade" class="stage-icon-img" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Marca D'água Monumental de Fundo -->
+        <div class="hero-watermark-wrapper" aria-hidden="true">
+          <div class="hero-watermark-text">IE3G</div>
+        </div>
+
+        <!-- Barra Inferior de Metadados Editoriais -->
+        <div class="hero-bottom-bar">
+          <div class="hero-index-indicator">
+            <span class="index-val">01</span>
+            <span class="bar"></span>
+          </div>
+
+          <div class="hero-meta-right" style="display: flex; align-items: center;">
+            <ul class="hero-categories-list">
+              <li>Conhecimento</li>
+              <li>Estratégia</li>
+              <li>Gestão</li>
+              <li>Resultados</li>
+            </ul>
+            <span class="hero-beacon" title="Online & Ativo"></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE MÉTRICAS & CREDIBILIDADE INSTITUCIONAL -->
+    <section class="metrics-section" id="impacto">
+      <div class="container">
+        <div class="metrics-grid">
+          
+          <div class="metric-item">
+            <div class="metric-value">+15</div>
+            <div class="metric-label">Anos de Excelência</div>
+            <div class="metric-sub">Trajetória sólida em consultoria e governança.</div>
+          </div>
+
+          <div class="metric-item">
+            <div class="metric-value">+280</div>
+            <div class="metric-label">Empresas Aceleradas</div>
+            <div class="metric-sub">Em diversos setores da economia nacional.</div>
+          </div>
+
+          <div class="metric-item">
+            <div class="metric-value">R$ 3.8B+</div>
+            <div class="metric-label">Valor Gerado</div>
+            <div class="metric-sub">Otimização de custos, margens e receitas.</div>
+          </div>
+
+          <div class="metric-item">
+            <div class="metric-value">98.6%</div>
+            <div class="metric-label">Retenção de Clientes</div>
+            <div class="metric-sub">Parcerias estratégicas de longo prazo.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OS 4 PILARES DA IE3G -->
+    <section class="section-padding" id="pilares">
+      <div class="container">
+        
+        <div class="section-header">
+          <div>
+            <span class="section-tag">Fundamentos Metodológicos</span>
+            <h2 class="section-title">Os Quatro Pilares IE3G</h2>
+          </div>
+          <p class="section-lead">
+            Uma abordagem integrada onde cada disciplina potencializa a próxima, gerando consistência e sustentabilidade corporativa.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          
+          <!-- Pilar 01 -->
+          <div class="pillar-card">
+            <div>
+              <div class="pillar-num">01</div>
+              <h3 class="pillar-title">Conhecimento</h3>
+              <p class="pillar-desc">
+                Diagnósticos aprofundados, inteligência competitiva e formação executiva contínua para subsidiar tomadas de decisão assertivas.
+              </p>
+            </div>
+            <ul class="pillar-items">
+              <li>Diagnóstico 360°</li>
+              <li>Análise de Mercado & Cenários</li>
+              <li>Capacitação de Lideranças</li>
+            </ul>
+          </div>
+
+          <!-- Pilar 02 -->
+          <div class="pillar-card">
+            <div>
+              <div class="pillar-num">02</div>
+              <h3 class="pillar-title">Estratégia</h3>
+              <p class="pillar-desc">
+                Arquitetura de posicionamento de mercado, planejamento plurianual e desenho de modelos de negócio sustentáveis e escaláveis.
+              </p>
+            </div>
+            <ul class="pillar-items">
+              <li>Planejamento Estratégico Ágil</li>
+              <li>Reposicionamento de Marca</li>
+              <li>M&A e Expansão de Mercado</li>
+            </ul>
+          </div>
+
+          <!-- Pilar 03 -->
+          <div class="pillar-card">
+            <div>
+              <div class="pillar-num">03</div>
+              <h3 class="pillar-title">Gestão</h3>
+              <p class="pillar-desc">
+                Estruturação de governança corporativa de alto nível, desenho de processos enxutos, indicadores de desempenho e compliance.
+              </p>
+            </div>
+            <ul class="pillar-items">
+              <li>Governança & Conselhos</li>
+              <li>Gestão por OKRs & KPIs</li>
+              <li>Otimização de Processos (BPM)</li>
+            </ul>
+          </div>
+
+          <!-- Pilar 04 -->
+          <div class="pillar-card">
+            <div>
+              <div class="pillar-num">04</div>
+              <h3 class="pillar-title">Resultados</h3>
+              <p class="pillar-desc">
+                A tangibilização de todo o esforço: rentabilidade ampliada, margens operacionais superiores e perenidade empresarial.
+              </p>
+            </div>
+            <ul class="pillar-items">
+              <li>Eficiência Financeira & Custos</li>
+              <li>Aceleração de Margem EBITDA</li>
+              <li>Crescimento Sustentável</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE CASES / PORTFÓLIO EDITORIAL -->
+    <section class="section-padding cases-section" id="cases">
+      <div class="container">
+        
+        <div class="section-header">
+          <div>
+            <span class="section-tag">Histórico de Transformação</span>
+            <h2 class="section-title">Cases & Desafios Solucionados</h2>
+          </div>
+          <p class="section-lead">
+            Conheça algumas das transformações lideradas pelo time da IE3G em organizações de destaque.
+          </p>
+        </div>
+
+        <div class="cases-grid">
+          
+          <!-- Case 1 -->
+          <a href="#contato" class="case-featured-block" data-open-modal>
+            <div class="case-img-stage">
+              <span class="case-tag-pill">Governança & Turnaround</span>
+              <img src="assets/case_skyscraper.jpg" alt="Case Reestruturação Corporativa Nexus">
+            </div>
+            <div class="case-meta">
+              <div>
+                <h3 class="case-name">Reestruturação & Governança Multissetorial</h3>
+                <p class="case-category">Holding Financeira · Crescimento de 42% no EBITDA em 18 meses</p>
+              </div>
+              <div class="case-explore-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Case 2 -->
+          <a href="#contato" class="case-featured-block" data-open-modal>
+            <div class="case-img-stage">
+              <span class="case-tag-pill">Planejamento & Escala</span>
+              <img src="assets/pillar_strategy.jpg" alt="Case Planejamento Estratégico Vanguard">
+            </div>
+            <div class="case-meta">
+              <div>
+                <h3 class="case-name">Arquitetura Estratégica & Expansão</h3>
+                <p class="case-category">Grupo Industrial · Expansão para 4 novos mercados com excelência operacional</p>
+              </div>
+              <div class="case-explore-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MANIFESTO INSTITUCIONAL EDITORIAL -->
+    <section class="manifesto-section" id="metodologia">
+      <div class="container">
+        <div class="manifesto-content">
+          <p class="manifesto-quote">
+            "Movimento sem direção é dispersão. <strong>Com conhecimento profundo e governança ágil</strong>, cada movimento corporativo torna-se <span class="muted-text">uma vantagem competitiva incontestável."</span>
+          </p>
+          <div class="manifesto-author">IE3G · Framework de Aceleração Contínua</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER EDITORIAL -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <a href="#" class="brand-lockup">
+            <img src="assets/logo_cube.png" alt="Logo IE3G" class="brand-logo-img">
+            <span class="brand-text">IE3G</span>
+          </a>
+          <p>
+            Conhecimento, Estratégia, Gestão e Resultados. Transformando potenciais corporativos em líderes definitivos de mercado.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Soluções</h4>
+          <ul class="footer-links">
+            <li><a href="#pilares">Diagnóstico & Conhecimento</a></li>
+            <li><a href="#pilares">Planejamento Estratégico</a></li>
+            <li><a href="#pilares">Governança Corporativa</a></li>
+            <li><a href="#pilares">Otimização de Resultados</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">O Instituto</h4>
+          <ul class="footer-links">
+            <li><a href="#sobre">Nossa História</a></li>
+            <li><a href="#metodologia">Metodologia Exclusiva</a></li>
+            <li><a href="#cases">Casos de Sucesso</a></li>
+            <li><a href="#impacto">Métricas de Impacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Contato Direto</h4>
+          <ul class="footer-links">
+            <li><a href="#" data-open-modal>Iniciar Projeto ↗</a></li>
+            <li><a href="mailto:contato@ie3g.com.br">contato@ie3g.com.br</a></li>
+            <li><a href="tel:+5511999999999">+55 (11) 99999-9999</a></li>
+            <li><a href="#">São Paulo, Brasil</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 IE3G. Todos os direitos reservados.</div>
+        <div style="display: flex; gap: 24px;">
+          <a href="#" style="color: inherit; text-decoration: none;">Privacidade</a>
+          <a href="#" style="color: inherit; text-decoration: none;">Termos de Uso</a>
+          <a href="#" style="color: inherit; text-decoration: none;">Governança</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- MODAL INTERATIVO: INICIAR PROJETO -->
+  <div class="modal-overlay" id="projectModal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" aria-label="Fechar Modal">✕</button>
+
+      <h3 class="modal-title">Iniciar Projeto</h3>
+      <p class="modal-desc">Compartilhe os desafios da sua organização para desenharmos uma proposta estratégica sob medida.</p>
+
+      <form id="projectForm">
+        
+        <div class="form-group">
+          <label class="form-label">Selecione o Pilar Principal:</label>
+          <div class="service-select-chips">
+            <button type="button" class="chip-btn selected">Diagnóstico & Conhecimento</button>
+            <button type="button" class="chip-btn">Planejamento Estratégico</button>
+            <button type="button" class="chip-btn">Governança & Gestão</button>
+            <button type="button" class="chip-btn">Eficiência & Resultados</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="clientName" class="form-label">Nome Completo</label>
+          <input type="text" id="clientName" class="form-input" placeholder="Ex: Roberto Silva" required>
+        </div>
+
+        <div class="form-group">
+          <label for="clientEmail" class="form-label">E-mail Corporativo</label>
+          <input type="email" id="clientEmail" class="form-input" placeholder="roberto@empresa.com.br" required>
+        </div>
+
+        <div class="form-group">
+          <label for="clientCompany" class="form-label">Empresa / Organização</label>
+          <input type="text" id="clientCompany" class="form-input" placeholder="Nome da organização" required>
+        </div>
+
+        <div class="form-group">
+          <label for="clientMsg" class="form-label">Breve resumo do desafio atual</label>
+          <textarea id="clientMsg" class="form-textarea" rows="3" placeholder="Ex: Precisamos estruturar nosso conselho e acelerar crescimento..."></textarea>
+        </div>
+
+        <button type="submit" class="nike-btn-primary" style="width: 100%; height: 50px;">
+          <span>Solicitar Apresentação Executiva</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
