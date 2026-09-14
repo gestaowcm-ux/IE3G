@@ -67,7 +67,67 @@ document.addEventListener('DOMContentLoaded', () => {
     metricsObserver.observe(metricsSection);
   }
 
-  // 3. Modal de Iniciar Projeto / Fale Conosco
+  // 3. Controle Dinâmico das Abas dos 4 Pilares (Educação, Consultoria, Mentoria, Tecnologia)
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+
+  const switchTab = (targetKey) => {
+    if (!targetKey) return;
+
+    tabButtons.forEach(btn => {
+      const isMatch = btn.getAttribute('data-target') === targetKey;
+      btn.classList.toggle('active', isMatch);
+      btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+    });
+
+    tabPanes.forEach(pane => {
+      const isMatch = pane.id === `panel-${targetKey}`;
+      if (isMatch) {
+        pane.classList.add('active');
+      } else {
+        pane.classList.remove('active');
+      }
+    });
+  };
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-target');
+      switchTab(target);
+    });
+  });
+
+  // Interceptar cliques em links que apontam para #softwares ou #solucoes
+  document.querySelectorAll('a[href="#softwares"]').forEach(link => {
+    link.addEventListener('click', () => {
+      switchTab('tecnologia');
+    });
+  });
+
+  document.querySelectorAll('a[href="#solucoes"]').forEach(link => {
+    link.addEventListener('click', () => {
+      // Se já estiver em tecnologia, pode manter ou alternar conforme clique
+    });
+  });
+
+  // Ativação baseada no hash da URL
+  const handleHashChange = () => {
+    const hash = window.location.hash.toLowerCase();
+    if (hash === '#softwares' || hash === '#tecnologia') {
+      switchTab('tecnologia');
+    } else if (hash === '#educacao') {
+      switchTab('educacao');
+    } else if (hash === '#consultoria') {
+      switchTab('consultoria');
+    } else if (hash === '#mentoria') {
+      switchTab('mentoria');
+    }
+  };
+
+  window.addEventListener('hashchange', handleHashChange);
+  handleHashChange();
+
+  // 4. Modal de Iniciar Projeto / Solicitar Trial
   const modalOverlay = document.getElementById('projectModal');
   const openModalBtns = document.querySelectorAll('[data-open-modal]');
   const closeModalBtn = document.querySelector('.modal-close-btn');
@@ -102,15 +162,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 4. Seleção de Chips no Formulário
+  // 5. Seleção de Chips no Formulário (Seleção única focada)
   const chipButtons = document.querySelectorAll('.chip-btn');
   chipButtons.forEach(chip => {
     chip.addEventListener('click', () => {
-      chip.classList.toggle('selected');
+      chipButtons.forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
     });
   });
 
-  // 5. Envio do Formulário com Feedback
+  // 6. Envio do Formulário com Feedback
   const projectForm = document.getElementById('projectForm');
   if (projectForm) {
     projectForm.addEventListener('submit', (e) => {
@@ -122,12 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
 
       setTimeout(() => {
-        submitBtn.innerHTML = '✓ Mensagem Enviada com Sucesso!';
+        submitBtn.innerHTML = '✓ Solicitação Enviada com Sucesso!';
         submitBtn.style.backgroundColor = '#007d48'; // Success token do DESIGN.md
         
         setTimeout(() => {
           projectForm.reset();
-          chipButtons.forEach(c => c.classList.remove('selected'));
+          chipButtons.forEach((c, idx) => c.classList.toggle('selected', idx === 0));
           submitBtn.innerHTML = originalText;
           submitBtn.style.backgroundColor = '';
           submitBtn.disabled = false;
@@ -137,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Atualização dinâmica do índice do Hero ao navegar pelos cases
+  // 7. Atualização dinâmica do índice do Hero ao navegar pelos cases
   const heroIndexNumber = document.querySelector('.hero-index-indicator .index-val');
   const caseCards = document.querySelectorAll('.case-featured-block');
   
@@ -154,10 +215,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 7. Navegação suave ao clicar nos links do menu
+  // 8. Navegação suave ao clicar nos links do menu
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', () => {
       navLinks.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
     });
