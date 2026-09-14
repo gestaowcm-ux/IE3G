@@ -71,6 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabPanes = document.querySelectorAll('.tab-pane');
   const horizontalCarouselInstances = {};
+  const TAB_ORDER = ['educacao', 'consultoria', 'mentoria', 'tecnologia'];
+  const TAB_LABELS = {
+    educacao: 'Educação',
+    consultoria: 'Consultoria',
+    mentoria: 'Mentoria',
+    tecnologia: 'Tecnologia & Softwares'
+  };
 
   const initHorizontalSolutionsCarousels = () => {
     tabPanes.forEach(pane => {
@@ -86,6 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (cards.length === 0) return;
 
+      const tabKey = pane.id.replace('panel-', '');
+      const tabIndex = TAB_ORDER.indexOf(tabKey);
+
       let currentIndex = 0;
       let isPointerDown = false;
       let hasDragged = false;
@@ -97,17 +107,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const getGap = () => 24;
 
+      const getCardWidth = () => {
+        if (cards[0] && cards[0].offsetWidth > 0) return cards[0].offsetWidth;
+        const anyCard = document.querySelector('.horizontal-carousel .solution-card');
+        if (anyCard && anyCard.offsetWidth > 0) return anyCard.offsetWidth;
+        return 368;
+      };
+
+      const getContainerWidth = () => {
+        if (carousel.offsetWidth > 0) return carousel.offsetWidth;
+        const anyCarousel = document.querySelector('.horizontal-carousel');
+        if (anyCarousel && anyCarousel.offsetWidth > 0) return anyCarousel.offsetWidth;
+        return Math.min(window.innerWidth - 48, 1152);
+      };
+
       const getMaxIndex = () => {
-        const cardW = cards[0].offsetWidth || 360;
+        const cardW = getCardWidth();
         const gap = getGap();
-        const containerW = carousel.offsetWidth;
-        const visibleCount = Math.max(1, Math.floor((containerW + gap * 0.5) / (cardW + gap)));
+        const containerW = getContainerWidth();
+        const visibleCount = Math.max(1, Math.floor((containerW + gap + 4) / (cardW + gap)));
         return Math.max(0, cards.length - visibleCount);
       };
 
       const update = (animate = true) => {
         if (cards.length === 0) return;
-        const cardW = cards[0].offsetWidth || 360;
+        const cardW = getCardWidth();
         const gap = getGap();
         const maxIndex = getMaxIndex();
 
@@ -117,15 +141,26 @@ document.addEventListener('DOMContentLoaded', () => {
         track.style.transition = animate ? 'transform 0.55s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
         track.style.transform = `translate3d(${-offset}px, 0, 0)`;
 
+        // Botões sempre ativos para fluxo sequencial contínuo entre abas
         if (prevBtn) {
-          const isAtStart = currentIndex <= 0;
-          prevBtn.disabled = isAtStart;
-          prevBtn.classList.toggle('is-disabled', isAtStart);
+          prevBtn.disabled = false;
+          prevBtn.classList.remove('is-disabled');
+          if (currentIndex <= 0) {
+            const prevKey = TAB_ORDER[(tabIndex - 1 + TAB_ORDER.length) % TAB_ORDER.length];
+            prevBtn.setAttribute('title', `Ir para vertical anterior (${TAB_LABELS[prevKey]})`);
+          } else {
+            prevBtn.setAttribute('title', 'Item anterior');
+          }
         }
         if (nextBtn) {
-          const isAtEnd = currentIndex >= maxIndex;
-          nextBtn.disabled = isAtEnd;
-          nextBtn.classList.toggle('is-disabled', isAtEnd);
+          nextBtn.disabled = false;
+          nextBtn.classList.remove('is-disabled');
+          if (currentIndex >= maxIndex) {
+            const nextKey = TAB_ORDER[(tabIndex + 1) % TAB_ORDER.length];
+            nextBtn.setAttribute('title', `Avançar para próxima vertical (${TAB_LABELS[nextKey]})`);
+          } else {
+            nextBtn.setAttribute('title', 'Próximo item');
+          }
         }
       };
 
@@ -135,6 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
           if (currentIndex > 0) {
             currentIndex--;
             update(true);
+          } else {
+            // Ao chegar ao início da vertical, retorna sequencialmente para a vertical anterior!
+            const prevTabIndex = (tabIndex - 1 + TAB_ORDER.length) % TAB_ORDER.length;
+            switchTab(TAB_ORDER[prevTabIndex], 'end');
           }
         });
       }
@@ -146,6 +185,10 @@ document.addEventListener('DOMContentLoaded', () => {
           if (currentIndex < maxIndex) {
             currentIndex++;
             update(true);
+          } else {
+            // Ao chegar ao final da vertical, avança sequencialmente para a próxima vertical!
+            const nextTabIndex = (tabIndex + 1) % TAB_ORDER.length;
+            switchTab(TAB_ORDER[nextTabIndex], 'start');
           }
         });
       }
@@ -164,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentX = e.clientX;
         activePointerId = e.pointerId;
 
-        const cardW = cards[0].offsetWidth || 360;
+        const cardW = getCardWidth();
         const gap = getGap();
         dragStartTranslate = -currentIndex * (cardW + gap);
 
@@ -189,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (hasDragged) {
           if (e.cancelable) e.preventDefault();
-          const cardW = cards[0].offsetWidth || 360;
+          const cardW = getCardWidth();
           const gap = getGap();
           const maxIndex = getMaxIndex();
           const maxNegativeOffset = -maxIndex * (cardW + gap);
@@ -228,12 +271,29 @@ document.addEventListener('DOMContentLoaded', () => {
           const deltaX = currentX - startX;
           const maxIndex = getMaxIndex();
 
-          if (deltaX < -45) {
-            currentIndex = Math.min(maxIndex, currentIndex + 1);
-          } else if (deltaX > 45) {
-            currentIndex = Math.max(0, currentIndex - 1);
+          if (deltaX < -50) {
+            if (currentIndex < maxIndex) {
+              currentIndex++;
+              update(true);
+            } else {
+              // Chegou ao fim da seção e arrastou para a esquerda -> Avança para a próxima vertical!
+              update(false);
+              const nextTabIndex = (tabIndex + 1) % TAB_ORDER.length;
+              switchTab(TAB_ORDER[nextTabIndex], 'start');
+            }
+          } else if (deltaX > 50) {
+            if (currentIndex > 0) {
+              currentIndex--;
+              update(true);
+            } else {
+              // Chegou ao início da seção e arrastou para a direita -> Retorna para a vertical anterior!
+              update(false);
+              const prevTabIndex = (tabIndex - 1 + TAB_ORDER.length) % TAB_ORDER.length;
+              switchTab(TAB_ORDER[prevTabIndex], 'end');
+            }
+          } else {
+            update(true);
           }
-          update(true);
         }
       };
 
@@ -262,11 +322,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       // Salva referência do carrossel da aba
-      const tabKey = pane.id.replace('panel-', '');
       horizontalCarouselInstances[tabKey] = {
         update,
-        reset: () => {
+        setToStart: () => {
           currentIndex = 0;
+          update(false);
+        },
+        setToEnd: () => {
+          currentIndex = getMaxIndex();
           update(false);
         }
       };
@@ -278,13 +341,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const switchTab = (targetKey) => {
+  const switchTab = (targetKey, position = 'start') => {
     if (!targetKey) return;
 
     tabButtons.forEach(btn => {
       const isMatch = btn.getAttribute('data-target') === targetKey;
       btn.classList.toggle('active', isMatch);
       btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      if (isMatch) {
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
     });
 
     tabPanes.forEach(pane => {
@@ -292,10 +358,15 @@ document.addEventListener('DOMContentLoaded', () => {
       pane.classList.toggle('active', isMatch);
     });
 
-    // Quando a aba se torna visível, recalcula as dimensões do carrossel dela
+    // Quando a aba se torna visível, posiciona no início ou fim conforme a navegação
     requestAnimationFrame(() => {
-      if (horizontalCarouselInstances[targetKey]) {
-        horizontalCarouselInstances[targetKey].update(false);
+      const instance = horizontalCarouselInstances[targetKey];
+      if (instance) {
+        if (position === 'end') {
+          instance.setToEnd();
+        } else {
+          instance.setToStart();
+        }
       }
     });
   };
@@ -303,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const target = btn.getAttribute('data-target');
-      switchTab(target);
+      switchTab(target, 'start');
     });
   });
 
